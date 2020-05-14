@@ -1,0 +1,149 @@
+﻿<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myImageSelectModal">
+    Select image
+</button>
+
+
+<!-- myImageSelectModal -->
+<div class="modal fade" id="myImageSelectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="overflow-y: initial !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Select Image</h4>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-6 col-md-5">
+                        <div class="modal-body" style="height: 250px; overflow-y: auto;">
+                            @Html.Partial("_SelectImage")
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-7">
+                        <img id="imageObject"><br />
+                        <span></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        @Html.TextBox("txtSearch", null, new { @class = "form-control, @width=5" })
+                        <button type="button" class="btn btn-primary" onclick="ResetList(false);">Search</button>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="ResetList(true);">Refresh</button>
+                <button type="button" id="submitBtnSelectImage" class="btn btn-primary">Save changes</button>
+                <div id="loading2" style="display: none; text-align: center">
+                    <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var pageSize = 12;
+    var pageIndex = 0;
+    var donePaging = true;
+
+    $(document).ready(function () {
+
+        GetData();
+        $('.modal-body').on('scroll', function () {
+            if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+                if (donePaging)
+                    GetData();
+            }
+        });
+    });
+
+    function ResetList(refresh) {
+        if (refresh) {
+            $("#txtSearch").val("");
+            $("imageObject").attr("src", "");
+        }
+        $("#tblImages").empty();
+        pageIndex = 0;
+        GetData();
+    }
+
+    function GetData() {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetBucketObjectList","ImageUploader")',
+            async: false,
+            data: { "bucketName": $("#AWSBucketName").val(), "path": $("#AWSMainPath").val(), "pageindex": pageIndex, "pagesize": pageSize, "searchString": $("#txtSearch").val() },
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                $("#loading2").hide();
+                if (data.length > 0) {
+                    for (var i = 0; i < pageSize ; i++) {
+                        var fileName = data[i].Key.replace(/^.*[\\\/]/, '');
+                        var fullKeyName = data[i].Key;
+                        $("#tblImages").append("<tr><td><a href='#' onclick=GetObject('" + fileName + "','" + fullKeyName + "');>" +
+                        fileName + "</a></td></tr>");
+                    }
+                    pageIndex++;
+                }
+            },
+            beforeSend: function () {
+                $("#loading2").show();
+                donePaging = false;
+            },
+            complete: function () {
+                $("#loading2").hide();
+                donePaging = true;
+            },
+            ajaxComplete: function () {
+                $("#loading2").hide();
+            },
+            ajaxStop: function () {
+                $("#loading2").hide();
+            },
+            error: function () {
+                alert("Error while retrieving data!");
+            }
+        });
+        $("#loading2").hide();
+    }
+
+    function GetObject(fileName, fullKeyName) {
+        $("#hdnFileName").val(fileName);
+        $("#hdnFullKeyName").val(fullKeyName);
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("ImageDownload","ImageUploader")',
+            data: { "bucketName": $("#AWSBucketName").val(), "keyName": $("#AWSMainPath").val(), "fileName": fileName, "fullKeyName": fullKeyName },
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                $("#imageObject").attr("src", "AwsTemp/" + fileName);
+            },
+            beforeSend: function () {
+                $("#loading2").show();
+            },
+            complete: function () {
+                $("#loading2").hide();
+            },
+            error: function () {
+                alert("Error while retrieving data!");
+            }
+        });
+    }
+
+    $('#submitBtnSelectImage').click(function () {
+        var mainPath = $("#AWSMainPath").val();
+        var fullKeyName = $("#hdnFullKeyName").val();
+
+        if (mainPath != fullKeyName) {
+            $("#hdnFileName").val(fullKeyName.replace(mainPath, ""));
+        }
+
+        $("#ImageName").val($("#hdnFileName").val());
+        $('#myImageSelectModal').modal('hide');
+    });
+</script>

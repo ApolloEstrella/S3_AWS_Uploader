@@ -1,0 +1,13 @@
+C:\My Projects\TomFullerton\ImgUploader\AwsWrapper\bin\Debug\AwsWrapper.dll
+C:\My Projects\TomFullerton\ImgUploader\AwsWrapper\bin\Debug\AwsWrapper.pdb
+C:\My Projects\TomFullerton\ImgUploader\AwsWrapper\obj\Debug\AwsWrapper.dll
+C:\My Projects\TomFullerton\ImgUploader\AwsWrapper\obj\Debug\AwsWrapper.pdb
+C:\My Projects\TomFullerton\ImgUploader\AwsWrapper\bin\Debug\AWSSDK.dll
+C:\My Projects\TomFullerton\ImgUploader\AwsWrapper\bin\Debug\AWSSDK.pdb
+D:\MyProjects\TomFullerton\ImgUploader\ImgUploader\AwsWrapper\bin\Debug\AwsWrapper.dll
+D:\MyProjects\TomFullerton\ImgUploader\ImgUploader\AwsWrapper\bin\Debug\AwsWrapper.pdb
+D:\MyProjects\TomFullerton\ImgUploader\ImgUploader\AwsWrapper\bin\Debug\AWSSDK.dll
+D:\MyProjects\TomFullerton\ImgUploader\ImgUploader\AwsWrapper\bin\Debug\AWSSDK.pdb
+D:\MyProjects\TomFullerton\ImgUploader\ImgUploader\AwsWrapper\obj\Debug\AwsWrapper.csprojResolveAssemblyReference.cache
+D:\MyProjects\TomFullerton\ImgUploader\ImgUploader\AwsWrapper\obj\Debug\AwsWrapper.dll
+D:\MyProjects\TomFullerton\ImgUploader\ImgUploader\AwsWrapper\obj\Debug\AwsWrapper.pdb

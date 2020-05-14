@@ -1,0 +1,65 @@
+﻿@using ImgUploader.Models
+
+@model ImageParameterModel
+
+<style>
+    .cropit-preview {
+        background-color: #f8f8f8;
+        background-size: cover;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin-top: 7px;
+        width: @string.Concat(@Model.PopWidth,"px");
+        height: @string.Concat(@Model.PopHeight, "px");
+        /*width: 770px;
+        height: 300px;*/
+    }
+
+    .cropit-preview-image-container {
+        cursor: move;
+    }
+
+    .image-size-label {
+        margin-top: 10px;
+    }
+
+    input, .export {
+        display: block;
+    }
+
+    button {
+        margin-top: 10px;
+    }
+</style>
+
+<div class="image-editor">
+    <input type="file" name="file" id="file" class="cropit-image-input">
+    <div id="cropit-preview" class="cropit-preview"></div>
+    <div class="image-size-label">
+        Resize image
+    </div>
+    <input type="range" class="cropit-image-zoom-input">
+    <button type="button" class="rotate-ccw">Rotate counterclockwise</button>
+    <button type="button" class="rotate-cw">Rotate clockwise</button>
+</div>
+<script>
+    $(function () {
+        $('.image-editor').cropit({
+            imageState: {
+                src: ''  
+            }
+        });
+
+        $('.rotate-cw').click(function () {
+            $('.image-editor').cropit('rotateCW');
+        });
+        $('.rotate-ccw').click(function () {
+            $('.image-editor').cropit('rotateCCW');
+        });
+
+        $('.export').click(function () {
+            var imageData = $('.image-editor').cropit('export');
+            window.open(imageData);
+        });
+    });
+</script>

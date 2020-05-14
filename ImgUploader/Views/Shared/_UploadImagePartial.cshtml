@@ -1,0 +1,83 @@
+﻿@using ImgUploader.Models
+
+@model ImageParameterModel
+
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myImageUploadModal">
+    Upload, crop &amp; save image
+</button>
+
+<!-- myImageUploadModal -->
+<div class="modal fade" id="myImageUploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Upload, crop &amp; save</h4>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("_UploadImage",@Model)
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="submitBtn" class="btn btn-primary">Save changes</button>
+                <div id="loading" style="display: none; text-align: center">
+                    <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    function GetFileName() {
+        // Get your file input (by it's id)
+        var fileInput = document.getElementById("file");
+        // Use a regular expression to pull the file name only
+        var fileName = fileInput.value.split(/(\\|\/)/g).pop();
+        return fileName;
+    }
+
+
+    $('#submitBtn').click(function () {
+
+        $('#loading').show();
+        $('#submitBtn').attr('disabled', 'disabled');
+        var image = {};
+        image.Source = $('.image-editor').cropit('export');
+        image.FileName = GetFileName();
+        image.AWSBucketName = $("#AWSBucketName").val();
+        image.AWSBucketPath = $("AWSBucketPath").val();
+        image.AWSSelectPath = $("#AWSSelectPath").val();
+        image.ThumbRequired = $("#ThumbRequired").val();
+        image.PopRequired = $("#PopRequired").val();
+        image.ThumbWidth = $("#ThumbWidth").val();
+        image.ThumbHeight = $("#ThumbHeight").val();
+        image.MainWidth = $("#MainWidth").val();
+        image.MainHeight = $("#MainHeight").val();
+        image.PopWidth = $("#PopWidth").val();
+        image.PopHeight = $("#PopHeight").val();
+        image.AWSThumbPath = $("#AWSThumbPath").val();
+        image.AWSMainPath = $("#AWSMainPath").val();
+        image.AWSPopPath = $("#AWSPopPath").val();
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("ImageUpload", "ImageUploader")',  
+            async: true,
+            data: image,
+            cache: false,
+            success: function (data) {
+                $('#myImageUploadModal').modal('hide');
+                $("#ImageName").val(data);
+                $('#loading').hide();
+            },
+            beforeSend: function() {
+                 $('#submitBtn').attr('disabled', 'disabled')},
+            complete: function () {
+                 $('#submitBtn').attr('disabled', false)}
+        });
+    });
+</script>

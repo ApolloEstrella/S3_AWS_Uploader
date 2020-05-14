@@ -1,0 +1,158 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+}
+
+
+<div class="row">
+
+    <p>Each page we use the image uploader we have the following:</p>
+    <ul>
+        <li>Input text box to write the image name too.</li>
+        <li>A button and modal to open the "upload/crop &amp; save image" partial view</li>
+        <li>A button and modal to open the "select image" partial view</li>
+        <li>jQuery values to pass to partial view (buket names, paths, image sizes, etc)</li>
+    </ul>
+
+
+    <hr />
+
+    <div class="col-xs-12">
+        <div class="col-xs-3"><label for="newsImage">Image name:</label></div>
+        <div class="form-group required  col-xs-8">
+
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-building fa-fw"></i></span>
+                <input type="text" class="form-control" id="newsImage" value="" placeholder="Image name" name="newsImage" />
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-5">
+        <h1>Upload, crop &amp; save image</h1>
+        <p>User selects an image from their machine to upload.</p>
+        <p>Image gets saved to AWS. Various sizes - thumb, main pop up image to bucket/folder that is set on this page.</p>
+        <p>Values need to be send over to pop up modal</p>
+        <ul>
+            <li>AWSBucketName</li>
+            <li>AWSBucketPath</li>
+            <li>TextInputName</li>
+            <li>AWSSelectPath</li>
+            <li>ThumbRequired</li>
+            <li>PopRequired</li>
+            <li>ThumbWidth</li>
+            <li>ThumbHeight</li>
+            <li>MainWidth</li>
+            <li>MainHeight</li>
+            <li>PopWidth</li>
+            <li>PopHeight</li>
+            <li>AWSThumbPath</li>
+            <li>AWSMainPath</li>
+            <li>AWSPopPath</li>
+        </ul>
+
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myImageUploadModal">
+            Upload, crop &amp; save image
+        </button>
+
+    </div>
+
+
+
+
+    <div class="col-xs-5 col-xs-offset-1">
+        <h1>Select image</h1>
+        <p>User select image from AWS list in pop up</p>
+        <p>Values need to be send over to pop up modal</p>
+        <ul>
+            <li>AWSBucketName</li>
+            <li>AWSBucketPath</li>
+            <li>AWSMainPath</li>
+        </ul>
+
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myImageSelectModal">
+            Select image
+        </button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- myImageUploadModal -->
+<div class="modal fade" id="myImageUploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Upload, crop &amp; save</h4>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("_UploadImage")
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- myImageSelectModal -->
+<div class="modal fade" id="myImageSelectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Select mage</h4>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("_SelectImage")
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--
+    AWSAccessKey & AWSSecretKey set in the web.config appSettings
+    Other values set below
+-->
+
+<script>
+    $("button").click(function () {
+        $("#aws").attr({
+            "AWSBucketName": "testbucketpp",
+            "AWSBucketPath": "media/articles/",
+            "TextInputName": "newsImage",
+            "AWSSelectPath": "testbucketpp/media/articles/main/",
+            "ThumbRequired": true,
+            "PopRequired": true,
+            "ThumbWidth": "100",
+            "ThumbHeight": "100",
+            "MainWidth": "200",
+            "MainHeight": "200",
+            "PopWidth": "400",
+            "PopHeight": "400",
+            "AWSThumbPath": "thumb",
+            "AWSMainPath": "main",
+            "AWSPopPath": "pop",
+        });
+    });
+</script>

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImgUploader", "ImgUploader\ImgUploader.csproj", "{D14802D3-DD85-4634-A515-AD31B57141D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwsWrapper", "AwsWrapper\AwsWrapper.csproj", "{D9C78AAE-BBA5-43EB-A468-ED9510D0683D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageUtilityWrapper", "ImageUtilityWrapper\ImageUtilityWrapper.csproj", "{54081E6A-B42E-4214-8BDE-A192F47A5113}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D14802D3-DD85-4634-A515-AD31B57141D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D14802D3-DD85-4634-A515-AD31B57141D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D14802D3-DD85-4634-A515-AD31B57141D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D14802D3-DD85-4634-A515-AD31B57141D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9C78AAE-BBA5-43EB-A468-ED9510D0683D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9C78AAE-BBA5-43EB-A468-ED9510D0683D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9C78AAE-BBA5-43EB-A468-ED9510D0683D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9C78AAE-BBA5-43EB-A468-ED9510D0683D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54081E6A-B42E-4214-8BDE-A192F47A5113}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54081E6A-B42E-4214-8BDE-A192F47A5113}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54081E6A-B42E-4214-8BDE-A192F47A5113}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54081E6A-B42E-4214-8BDE-A192F47A5113}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

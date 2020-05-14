@@ -1,0 +1,37 @@
+﻿@using ImgUploader.Models
+
+@model ImageParameterModel
+
+@{
+    ViewBag.Title = "Admin";
+}
+
+@Html.Partial("_UploadImagePartial",@Model)
+<br/>
+<br/>
+@Html.Partial("_SelectImagePartial")
+<br/>
+<br/>
+@Html.TextBox("ImageName")
+@Html.HiddenFor(m => m.AWSBucketName)
+@Html.HiddenFor(m => m.AWSBucketPath)
+@Html.HiddenFor(m => m.AWSSelectPath)
+@Html.HiddenFor(m => m.ThumbRequired)
+@Html.HiddenFor(m => m.PopRequired)
+@Html.HiddenFor(m => m.ThumbWidth)
+@Html.HiddenFor(m => m.ThumbHeight)
+@Html.HiddenFor(m => m.MainWidth)
+@Html.HiddenFor(m => m.MainHeight)
+@Html.HiddenFor(m => m.PopWidth)
+@Html.HiddenFor(m => m.PopHeight)
+@Html.HiddenFor(m => m.AWSThumbPath)
+@Html.HiddenFor(m => m.AWSMainPath)
+@Html.HiddenFor(m => m.AWSPopPath)
+
+@Html.Hidden("hdnFileName")
+@Html.Hidden("hdnFullKeyName")
+
+    
+
+ 
+

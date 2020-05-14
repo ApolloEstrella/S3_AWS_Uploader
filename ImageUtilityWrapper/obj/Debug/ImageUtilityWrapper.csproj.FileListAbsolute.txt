@@ -1,0 +1,14 @@
+C:\My Projects\TomFullerton\ImgUploader\ImageUtilityWrapper\bin\Debug\ImageUtilityWrapper.dll
+C:\My Projects\TomFullerton\ImgUploader\ImageUtilityWrapper\bin\Debug\ImageUtilityWrapper.pdb
+C:\My Projects\TomFullerton\ImgUploader\ImageUtilityWrapper\obj\Debug\ImageUtilityWrapper.dll
+C:\My Projects\TomFullerton\ImgUploader\ImageUtilityWrapper\obj\Debug\ImageUtilityWrapper.pdb
+C:\My Projects\TomFullerton\ImgUploader\ImageUtilityWrapper\bin\Debug\ImageResizer.dll
+C:\My Projects\TomFullerton\ImgUploader\ImageUtilityWrapper\bin\Debug\ImageResizer.xml
+C:\My Projects\TomFullerton\ImgUploader\ImageUtilityWrapper\obj\Debug\ImageUtilityWrapper.csprojResolveAssemblyReference.cache
+D:\MyProjects\TomFullerton\ImgUploader\ImgUploader\ImageUtilityWrapper\bin\Debug\ImageUtilityWrapper.dll
+D:\MyProjects\TomFullerton\ImgUploader\ImgUploader\ImageUtilityWrapper\bin\Debug\ImageUtilityWrapper.pdb
+D:\MyProjects\TomFullerton\ImgUploader\ImgUploader\ImageUtilityWrapper\bin\Debug\ImageResizer.dll
+D:\MyProjects\TomFullerton\ImgUploader\ImgUploader\ImageUtilityWrapper\bin\Debug\ImageResizer.xml
+D:\MyProjects\TomFullerton\ImgUploader\ImgUploader\ImageUtilityWrapper\obj\Debug\ImageUtilityWrapper.csprojResolveAssemblyReference.cache
+D:\MyProjects\TomFullerton\ImgUploader\ImgUploader\ImageUtilityWrapper\obj\Debug\ImageUtilityWrapper.dll
+D:\MyProjects\TomFullerton\ImgUploader\ImgUploader\ImageUtilityWrapper\obj\Debug\ImageUtilityWrapper.pdb
